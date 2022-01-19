@@ -21,7 +21,7 @@ const data = [
     thirdParagraph: `Dagobah hutt jawa leia calamari ventress skywalker yoda. Binks wicket hutt coruscant sidious
         naboo ackbar tatooine. Hutt lars padmé darth. Maul solo darth darth jabba qui-gon chewbacca darth maul. Moff baba wicket
         han. C-3po antilles moff qui-gon ahsoka aayla dooku amidala. Palpatine droid amidala droid k-3po twi'lek padmé wookiee. Leia
-        moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
+        moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`,
   },
   {
     title: 'Javascript and You, ES6',
@@ -41,7 +41,7 @@ const data = [
     thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
         Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
         roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
-        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
+        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`,
   },
   {
     title: 'React vs Angular vs Vue',
@@ -69,7 +69,7 @@ const data = [
 
     thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel 
         Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James 
-        Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
+        Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`,
   },
   {
     title: 'Professional Software Development in 2019',
@@ -85,8 +85,8 @@ const data = [
 
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
-          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`,
+  },
 ];
 
 /*
@@ -114,3 +114,56 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+const articles = document.querySelector('.articles');
+
+function articleMaker(obj) {
+  //instantiate elements needed for article
+
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const span = document.createElement('span');
+
+  // set up the structure of our elements
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
+  article.appendChild(span);
+
+  //add classnames to our elements
+  article.classList.add('article');
+  articleTitle.classList.add('h2');
+  articleDate.classList.add('date');
+  span.classList.add('expandButton');
+
+  //set text content using obj
+
+  articleTitle.textContent = obj.title;
+  articleDate.textContent = obj.date;
+  firstParagraph.textContent = obj.firstParagraph;
+  secondParagraph.textContent = obj.secondParagraph;
+  thirdParagraph.textContent = obj.thirdParagraph;
+  span.textContent = 'Expand Article';
+
+  //Open or close article
+  span.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  });
+
+  return article;
+}
+
+const articleElements = data.map((data) => {
+  return articleMaker(data);
+});
+
+articleElements.forEach((elem) => {
+  articles.appendChild(elem);
+});
