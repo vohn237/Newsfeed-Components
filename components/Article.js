@@ -137,7 +137,7 @@ function articleMaker(obj) {
   article.appendChild(thirdParagraph);
   article.appendChild(span);
 
-  //add classnames to our elements
+  //add classnames to elements
   article.classList.add('article');
   articleTitle.classList.add('h2');
   articleDate.classList.add('date');
