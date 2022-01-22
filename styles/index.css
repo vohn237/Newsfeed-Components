@@ -76,14 +76,13 @@ body {
   display: none;
   position: fixed;
   top: 75px;
-  left: 0;
+  left: 30px;
   width: 350px;
-  height: 100vh;
+  height: 80vh;
   /* This give the height 100% of the screen or, '100% of View Height' */
   background-color: #81c784;
   border: 1px solid #004d40;
-  border-left: none;
-  border-bottom: none;
+  border-radius: 10px;
   z-index: 2;
   /* This set the layer level of the element, it has precendence over initial level of 1*/
 }
