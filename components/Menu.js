@@ -38,6 +38,7 @@ function menuMaker(arr = []) {
 
   // menu elements
   const menu = document.createElement('div');
+  menu.classList.add('menu');
   const menuItems = document.createElement('ul');
 
   //creating each list item
@@ -50,16 +51,13 @@ function menuMaker(arr = []) {
   //add menu items to menu
   menu.appendChild(menuItems);
 
-  //list styles
-  menuItems.classList.add('menu');
-
   //place menu and items inside the button class
   const menuButton = document.querySelector('.menu-button');
   menuButton.appendChild(menu);
 
   //add click event listener to menu button
   menuButton.addEventListener('click', () => {
-    menuItems.classList.toggle('menu--open');
+    menu.classList.toggle('menu--open');
   });
 
   return menu;
